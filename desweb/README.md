@@ -29,5 +29,8 @@ npm run dev
 5. Levanta base de datos backend (asegúrate de tener el backend corriendo):
 node index.js
 
-6. Para descargar dependecias sqlite3:
-npm install sqlite3 sequelize
+6. Para descargar mongodb:
+npm install mongodb
+
+7. Para descargar graphql
+npm install graphql express-graphql
