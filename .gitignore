@@ -1,0 +1,23 @@
+# === Node & React ===
+node_modules/
+dist/
+build/
+*.log
+.env*
+.env.*
+*.local
+
+# === IDEs ===
+.vscode/
+.idea/
+*.iml
+
+# === OS files ===
+.DS_Store
+Thumbs.db
+
+# === Misc ===
+*.suo
+*.njsproj
+*.sln
+*.sw?
