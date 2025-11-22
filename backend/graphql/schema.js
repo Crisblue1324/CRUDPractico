@@ -1,7 +1,6 @@
 const { GraphQLObjectType, GraphQLSchema, GraphQLString, GraphQLList, GraphQLID, GraphQLNonNull } = require("graphql");
 const User = require("../models/user");
 
-// === Definición del tipo User ===
 const UserType = new GraphQLObjectType({
     name: "User",
     fields: () => ({
@@ -15,7 +14,6 @@ const UserType = new GraphQLObjectType({
     }),
 });
 
-// === Consultas ===
 const RootQuery = new GraphQLObjectType({
     name: "RootQueryType",
     fields: {
@@ -42,7 +40,6 @@ const RootQuery = new GraphQLObjectType({
     },
 });
 
-// === Mutaciones ===
 const Mutation = new GraphQLObjectType({
     name: "Mutation",
     fields: {
