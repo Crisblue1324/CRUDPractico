@@ -5,7 +5,6 @@ const Auth = require("../models/auth");
 
 const router = express.Router();
 
-// POST /api/auth/register - Registrar nuevo usuario
 router.post("/register", async (req, res) => {
     try {
         const {nombre, apellido, email, telefono, password} = req.body;
@@ -27,7 +26,6 @@ router.post("/register", async (req, res) => {
     }
 });
 
-// POST /api/auth/login - Iniciar sesión
 router.post("/login", async (req, res) => {
     try {
         const {email, password} = req.body;
@@ -58,23 +56,19 @@ router.post("/login", async (req, res) => {
     }
 });
 
-// GET /api/auth/google - Iniciar login con Google
 router.get("/google", passport.authenticate("google", {
     scope: ["profile", "email"]
 }));
 
-// GET /api/auth/google/callback - Callback de Google
 router.get("/google/callback",
     passport.authenticate("google", {session: false, failureRedirect: "/login"}),
     (req, res) => {
-        // Generar token JWT
         const token = jwt.sign(
             {id: req.user._id, email: req.user.email, nombre: req.user.nombre},
             process.env.JWT_SECRET,
             {expiresIn: "24h"}
         );
 
-        // Redirigir al frontend con el token
         res.redirect(`${process.env.FRONTEND_URL}?token=${token}&user=${encodeURIComponent(JSON.stringify({
             id: req.user._id,
             nombre: req.user.nombre,

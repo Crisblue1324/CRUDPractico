@@ -1,6 +1,5 @@
-const API_URL = "http://localhost:5000/api/auth";
+const API_URL = import.meta.env.VITE_API_URL + "/auth";
 
-// Registrar usuario
 export const register = async (userData) => {
     const response = await fetch(`${API_URL}/register`, {
         method: "POST",
@@ -12,7 +11,6 @@ export const register = async (userData) => {
     return data;
 };
 
-// Login
 export const login = async (credentials) => {
     const response = await fetch(`${API_URL}/login`, {
         method: "POST",
@@ -22,29 +20,24 @@ export const login = async (credentials) => {
     const data = await response.json();
     if (!response.ok) throw new Error(data.message);
 
-    // Guardar token en localStorage
     localStorage.setItem("token", data.token);
     localStorage.setItem("user", JSON.stringify(data.user));
     return data;
 };
 
-// Logout
 export const logout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
 };
 
-// Verificar si está autenticado
 export const isAuthenticated = () => {
     return localStorage.getItem("token") !== null;
 };
 
-// Obtener token
 export const getToken = () => {
     return localStorage.getItem("token");
 };
 
-// Obtener usuario actual
 export const getCurrentUser = () => {
     const user = localStorage.getItem("user");
     return user ? JSON.parse(user) : null;

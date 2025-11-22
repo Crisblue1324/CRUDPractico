@@ -12,7 +12,6 @@ const authSchema = new mongoose.Schema({
 
 authSchema.pre("save", async function (next) {
     if (!this.isModified("password")) return next();
-    // No encriptar si es usuario de Google
     if (this.password.startsWith("google-oauth-")) return next();
     this.password = await bcrypt.hash(this.password, 10);
     next();
