@@ -1,5 +1,7 @@
 # 📌 Proyecto CRUD con React + Vite + Autenticación JWT + OAuth Google
 
+🌐 **Demo en vivo:** [https://front-end-desweb.vercel.app](https://front-end-desweb.vercel.app)
+
 Este proyecto es un **CRUD (Crear, Leer, Actualizar, Eliminar)** de usuarios desarrollado con **React** y **Vite**, con
 sistema de autenticación completo usando **JWT** y **Google OAuth**.
 
@@ -63,6 +65,7 @@ JWT_SECRET=tu_clave_secreta_aqui
 GOOGLE_CLIENT_ID=tu_google_client_id
 GOOGLE_CLIENT_SECRET=tu_google_client_secret
 FRONTEND_URL=http://localhost:5173
+BACKEND_URL=http://localhost:5000
 ```
 
 #### Iniciar Backend:
@@ -248,3 +251,15 @@ GOOGLE_CLIENT_SECRET=GOCSPX-tu_client_secret
 # Frontend URL
 FRONTEND_URL=http://localhost:5173
 ```
+---
+## 🚀 Despliegue
+
+### Opción 1: Monorepo (repositorio único)
+Tanto Vercel como Render permiten especificar el **Root Directory**:
+- **Frontend en Vercel:** Root Directory = `frontend`
+- **Backend en Render:** Root Directory = `backend`
+
+### Opción 2: Repositorios separados
+También puedes separar en dos repositorios:
+- Un repositorio para el frontend
+- Un repositorio para el backend
